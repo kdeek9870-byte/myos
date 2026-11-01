@@ -29,7 +29,7 @@ jobs:
         mkarchiso -v -w work/ -o out/ profile/
 
     - name: Upload Finished ISO File
-      uses: actions/upload-artifacts@v4
+      uses: actions/upload-artifact@v4
       with:
         name: myos-live-iso
         path: out/*.iso
