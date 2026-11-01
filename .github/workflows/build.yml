@@ -1,4 +1,3 @@
-# Waking up actions factory
 name: Build Custom Archiso Cloud Factory
 
 on:
@@ -22,12 +21,17 @@ jobs:
     - name: Checkout Code Repository
       uses: actions/checkout@v4
 
+    - name: Fix Legacy Profile Validation Check
+      run: |
+        # Strips out legacy memtest references causing validation abort errors
+        rm -f profile/efiboot/loader/entries/*memtest*
+
     - name: Execute Cloud Build Factory
       run: |
-        # Creates work and out directory inside the cloud instance
         mkdir -p out work
-        ARCHISO_GNUPG_HOME=/tmp mkarchiso -C zstd -v -w work/ -o out/ profile/
-
+        # Force low-memory ZSTD compression securely via environment variables
+        export SQUASHFS_ARGS="-comp zstd -Xcompression-level 1"
+        mkarchiso -v -w work/ -o out/ profile/
 
     - name: Upload Finished ISO File
       uses: actions/upload-artifact@v4
