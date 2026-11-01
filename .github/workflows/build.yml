@@ -26,7 +26,8 @@ jobs:
       run: |
         # Creates work and out directory inside the cloud instance
         mkdir -p out work
-        mkarchiso -c zstd -v -w work/ -o out/ profile/
+        ARCHISO_GNUPG_HOME=/tmp mkarchiso -C zstd -v -w work/ -o out/ profile/
+
 
     - name: Upload Finished ISO File
       uses: actions/upload-artifact@v4
