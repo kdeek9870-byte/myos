@@ -1,0 +1,20 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+  "modules-left": ["labwc/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": ["cpu", "memory", "battery", "network", "pulseaudio"],
+  "labwc/workspaces": { "format": "{icon}", "on-click": "activate" },
+  "cpu": { "format": " {usage}%" },
+  "memory": { "format": " {used:0.1f}G" },
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-icons": ["", "", "", "", ""]
+  },
+  "network": {
+    "format-wifi": " {essid}",
+    "on-click": "nm-connection-editor"
+  },
+  "pulseaudio": { "format": "{icon} {volume}%", "on-click": "pavucontrol" }
+}

@@ -1,0 +1,34 @@
+name: Build Custom Archiso Cloud Factory
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-iso:
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux:latest
+      options: --privileged
+
+    steps:
+    - name: Install System Dependencies
+      run: |
+        pacman -Syu --noconfirm
+        pacman -S --noconfirm archiso git
+
+    - name: Checkout Code Repository
+      uses: actions/checkout@v4
+
+    - name: Execute Cloud Build Factory
+      run: |
+        # Creates work and out directory inside the cloud instance
+        mkdir -p out work
+        mkarchiso -v -w work/ -o out/ profile/
+
+    - name: Upload Finished ISO File
+      uses: actions/artifacts@v4
+      with:
+        name: myos-live-iso
+        path: out/*.iso

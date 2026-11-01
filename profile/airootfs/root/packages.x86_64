@@ -1,0 +1,70 @@
+# --- archiso essentials: DO NOT REMOVE ---
+base
+mkinitcpio-archiso
+syslinux
+grub
+edk2-shell
+memtest86+
+
+# --- kernel and microcode ---
+linux-lts
+linux-lts-headers
+linux-firmware
+intel-ucode
+
+# --- user tooling ---
+sudo
+nano
+git
+
+# --- graphics (Braswell / Gen8) ---
+mesa
+libva-intel-driver
+intel-media-driver
+vulkan-intel
+
+# --- wayland stack ---
+wayland
+wayland-protocols
+xorg-xwayland
+seatd
+labwc
+waybar
+wofi
+foot
+thunar
+mako
+wl-clipboard
+grim
+slurp
+wlr-randr
+
+# --- audio (max98090, NOT Murphy) ---
+pipewire
+pipewire-pulse
+pipewire-alsa
+wireplumber
+alsa-utils
+sof-firmware
+
+# --- network / bluetooth ---
+networkmanager
+iwd
+bluez
+bluez-utils
+
+# --- session / auth ---
+polkit
+sddm
+
+# --- power / memory ---
+zram-generator
+tlp
+brightnessctl
+playerctl
+
+# --- installer-only (Image B) ---
+parted
+dosfstools
+e2fsprogs
+gptfdisk

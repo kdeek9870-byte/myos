@@ -1,0 +1,9 @@
+[Trigger]
+Type = Package
+Operation = Install
+Target = sof-firmware
+
+[Action]
+Description = Fixing max98090 topology symlink for CELES
+When = PostTransaction
+Exec = /usr/bin/ln -sf sof-cht-max98090.tplg /usr/lib/firmware/sof-byt-max98090.tplg

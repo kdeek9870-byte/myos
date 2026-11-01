@@ -1,0 +1,5 @@
+* { border: none; border-radius: 0; font-family: monospace; font-size: 12px; min-height: 0; }
+window#waybar { background: #1a1a1a; color: #ffffff; }
+#workspaces button { padding: 0 8px; background: transparent; color: #888888; }
+#workspaces button.focused { background: #444444; color: #ffffff; }
+#clock, #cpu, #memory, #battery, #network, #pulseaudio { padding: 0 10px; }
